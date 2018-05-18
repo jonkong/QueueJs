@@ -5,6 +5,11 @@ Queue.js
 A function to represent a queue
 
 Modified by Jonathan Kong
+Changes: 
+1. getQueue
+2. setQueue
+3. dequeue function deletes first element of the array everytime.
+4. peek function returns the 2nd element or undefined.
 
 Created by Kate Morley - http://code.iamkate.com/ - and released under the terms
 of the CC0 1.0 Universal legal code:
@@ -18,9 +23,8 @@ http://creativecommons.org/publicdomain/zero/1.0/legalcode
  */
 function Queue(){
 
-  // initialise the queue and offset
+  // initialise the queue
   var queue  = [];
-  var offset = 0;
 
   this.setQueue = function(initArray){
     queue = initArray;
@@ -32,7 +36,7 @@ function Queue(){
 
   // Returns the length of the queue.
   this.getLength = function(){
-    return (queue.length - offset);
+    return queue.length;
   }
 
   // Returns true if the queue is empty, and false otherwise.
@@ -57,13 +61,9 @@ function Queue(){
     if (queue.length == 0) return undefined;
 
     // store the item at the front of the queue
-    var item = queue[offset];
+    var item = queue[0];
 
-    // increment the offset and remove the free space if necessary
-    if (++ offset * 2 >= queue.length){
-      queue  = queue.slice(offset);
-      offset = 0;
-    }
+    queue  = queue.slice(1);
 
     // return the dequeued item
     return item;
@@ -74,7 +74,7 @@ function Queue(){
    * queue is empty then undefined is returned.
    */
   this.peek = function(){
-    return (queue.length > 0 ? queue[offset] : undefined);
+    return queue.length > 1 ? queue[1] : undefined;
   }
 
 }
