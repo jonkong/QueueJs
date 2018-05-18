@@ -31,11 +31,13 @@ var item = queue.peek();
 Both the dequeue and peek functions return the value ‘undefined’ if the queue is empty. The getLength and isEmpty functions can be used to determine the current state of the queue:
 
 ### determine the number of items in the queue
+```
 var length = queue.getLength();
-
+```
 ### determine whether the queue is empty
+```
 var isEmpty = queue.isEmpty();
-
+```
 ### set an array as a queue
 
 ```
